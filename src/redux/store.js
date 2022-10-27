@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import postsSlise from './slises/posts'
+import authSlice from './slises/auth'
 
 
 const reducers = combineReducers({
-	posts: postsSlise
+	posts: postsSlise,
+	auth: authSlice
 })
 
 const store = configureStore({

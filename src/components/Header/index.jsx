@@ -5,11 +5,19 @@ import styles from './Header.module.scss';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Fingerprint from '@mui/icons-material/Fingerprint'
+import { selectIsAuth, logout } from '../../redux/slises/auth'
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Header = () => {
-  const isAuth = false;
+  const dispatch = useDispatch()
+  const isAuth = useSelector(selectIsAuth)
+  console.log(isAuth)
+  const onClickLogout = () => {
+    if (window.confirm('Ви впевнені що бажаєте вийти?')) {
+      dispatch(logout())
+    }
 
-  const onClickLogout = () => { };
+  };
 
   return (
     <div className={styles.root}>
@@ -23,7 +31,7 @@ export const Header = () => {
           <div className={styles.buttons}>
             {isAuth ? (
               <>
-                <Link to="/posts/create">
+                <Link to="add-post">
                   <Button variant="contained">Написати статтю</Button>
                 </Link>
                 <Button onClick={onClickLogout} variant="contained" color="error">
