@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 let instans = axios.create({
-	baseURL: 'http://localhost:4444'
+	baseURL: 'http://195.189.227.87:4444'
 })
 
 instans.interceptors.request.use((config) => {
